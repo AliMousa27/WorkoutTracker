@@ -8,44 +8,33 @@ class Login extends InitalPage {
   Column addContentToContainer() {
     return Column(
       children: [
+        const SizedBox(
+          height: 50,
+        ),
         createTextField("E-mail", 3.5, Icons.email, false),
+        const SizedBox(
+          height: 50,
+        ),
         createTextField("Password", 0.5, Icons.key, true),
-        const Align(
-          alignment: Alignment.bottomLeft,
-          heightFactor: 3,
-          widthFactor: 3,
-          child: Text(
-            //TODO:MAKE CLICKABLE THAT TAKES YOU ELSEWHERE
-            "Forgot Password?",
-            style: TextStyle(color: Colors.blue),
-          ),
+        const SizedBox(
+          height: 25,
         ),
-        Align(
-          heightFactor: 2,
-          child: SizedBox(
-            width: 200,
-            height: 40,
-            child: ElevatedButton(
-              onPressed: login,
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ),
-                ),
-              ),
-              child: const Text("Login"),
-            ),
-          ),
+        const Text(
+          //todo: make text clickable
+          "Forgot Password?",
+          style: TextStyle(color: Colors.blue),
         ),
-        const Align(
-          alignment: Alignment.center,
-          heightFactor: 1,
-          child: Text(
-            //TODO:MAKE CLICKABLE THAT TAKES YOU ELSEWHERE
-            "Create An Account",
-            style: TextStyle(color: Colors.blue),
-          ),
+        const SizedBox(
+          height: 20,
+        ),
+        super.createStyledButton(200, 40, 18, login),
+        const SizedBox(
+          height: 20,
+        ),
+        const Text(
+          //todo: make text clickable
+          "Create An Account",
+          style: TextStyle(color: Colors.blue),
         ),
       ],
     );
