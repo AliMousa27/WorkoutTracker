@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-class InitalPage extends StatelessWidget {
+abstract class InitalPage extends StatelessWidget {
   const InitalPage({super.key});
   @override
   Widget build(BuildContext context) {
@@ -44,12 +44,14 @@ class InitalPage extends StatelessWidget {
           border: Border.all(color: Colors.black)),
       height: constraints.maxHeight / 1.7,
       width: MediaQuery.of(context).size.width / 1.05,
+      child: SingleChildScrollView(
+        child: addContentToContainer(),
+      ),
     );
   }
 
-  login() {
-    //todo implement body
-  }
+//Needs to be overriden toa dd content to the box
+  Column addContentToContainer();
 
   SizedBox createTextField(
       String text, double heightFactor, IconData icon, bool obscureText) {
