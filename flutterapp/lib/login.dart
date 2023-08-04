@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/inital_page.dart';
+import 'package:flutterapp/logs.dart';
+import 'package:flutterapp/register_page.dart';
 
 class Login extends InitalPage {
   const Login({super.key});
 
   @override
-  Column addContentToContainer() {
+  Column addContentToContainer(BuildContext context) {
     return Column(
       children: [
         const SizedBox(
@@ -27,23 +29,33 @@ class Login extends InitalPage {
         const SizedBox(
           height: 20,
         ),
-        super.createStyledButton(200, 40, 18, login),
+        super.createStyledButton(200, 40, 18, login, "Login", context),
         const SizedBox(
           height: 20,
         ),
-        const Text(
-          //todo: make text clickable
-          "Create An Account",
-          style: TextStyle(color: Colors.blue),
+        GestureDetector(
+          onTap: () => test(context),
+          child: const Text(
+            //todo: make text clickable
+            "Create An Account",
+            style: TextStyle(color: Colors.blue),
+          ),
         ),
       ],
     );
   }
 
-  login() {
-    //todo implement body
+  test(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const RegisterPage()),
+    );
   }
-  createAccount() {
-    //todo implement body
+
+  login(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Logs()),
+    );
   }
 }

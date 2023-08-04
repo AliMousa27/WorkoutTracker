@@ -45,13 +45,13 @@ abstract class InitalPage extends StatelessWidget {
       height: constraints.maxHeight / 1.7,
       width: MediaQuery.of(context).size.width / 1.05,
       child: SingleChildScrollView(
-        child: addContentToContainer(),
+        child: addContentToContainer(context),
       ),
     );
   }
 
 //Needs to be overriden toa dd content to the box
-  Column addContentToContainer();
+  Column addContentToContainer(BuildContext context);
 
   SizedBox createTextField(
       String text, double heightFactor, IconData icon, bool obscureText) {
@@ -112,22 +112,46 @@ abstract class InitalPage extends StatelessWidget {
     );
   }
 
-  SizedBox createStyledButton(double btnWidth, double btnHeight,
-      double btnCornerRadius, Function onPress) {
+  SizedBox createStyledButton(
+      double btnWidth,
+      double btnHeight,
+      double btnCornerRadius,
+      Function onPress,
+      String btnText,
+      BuildContext context) {
     return SizedBox(
       height: btnHeight,
       width: btnWidth,
       child: ElevatedButton(
-        //maybe will add parameters if needed when creating backend
-        onPressed: () => onPress,
+        onPressed: () => onPress(context),
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(btnCornerRadius),
             ),
           ),
+          // Remove default background, overlay, shadow, etc.
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
+          overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+          elevation: MaterialStateProperty.all<double>(0),
         ),
-        child: const Text("Register"),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(btnCornerRadius),
+            gradient: const LinearGradient(
+              colors: [
+                Colors.blue, // Replace with your desired start color
+                Color.fromARGB(
+                    255, 91, 203, 255), // Replace with your desired end color
+              ],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+          ),
+          child: Center(
+            child: Text(btnText),
+          ),
+        ),
       ),
     );
   }

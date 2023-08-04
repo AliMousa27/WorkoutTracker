@@ -5,7 +5,7 @@ class RegisterPage extends InitalPage {
   const RegisterPage({super.key});
 
   @override
-  Column addContentToContainer() {
+  Column addContentToContainer(BuildContext context) {
     return Column(
       children: [
         const SizedBox(height: 30),
@@ -15,7 +15,8 @@ class RegisterPage extends InitalPage {
         const SizedBox(height: 30),
         createTextField("Password", 2.5, Icons.key, true),
         const SizedBox(height: 30),
-        super.createStyledButton(200, 40, 18, registerNewAccount),
+        super.createStyledButton(
+            200, 40, 18, registerNewAccount, "Register", context),
         const SizedBox(
           height: 25,
         ),
@@ -35,7 +36,7 @@ class RegisterPage extends InitalPage {
     );
   }
 
-  void registerNewAccount() {
+  void registerNewAccount(BuildContext context) {
     //todo: implement body
   }
 }
