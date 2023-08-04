@@ -27,8 +27,7 @@ class RegisterPage extends InitalPage {
               TextSpan(
                 text: 'Already have an account?',
               ),
-              TextSpan(
-                  text: ' Learn Flutter.', style: TextStyle(color: Colors.blue))
+              TextSpan(text: ' Login.', style: TextStyle(color: Colors.blue))
             ],
           ),
         )

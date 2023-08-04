@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/bottom_nav_bar.dart';
 import 'package:flutterapp/inital_page.dart';
-import 'package:flutterapp/logs.dart';
 import 'package:flutterapp/register_page.dart';
 
 class Login extends InitalPage {
@@ -34,7 +34,7 @@ class Login extends InitalPage {
           height: 20,
         ),
         GestureDetector(
-          onTap: () => test(context),
+          onTap: () => switchToRegisterPG(context),
           child: const Text(
             //todo: make text clickable
             "Create An Account",
@@ -45,7 +45,7 @@ class Login extends InitalPage {
     );
   }
 
-  test(BuildContext context) {
+  switchToRegisterPG(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const RegisterPage()),
@@ -55,7 +55,7 @@ class Login extends InitalPage {
   login(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const Logs()),
+      MaterialPageRoute(builder: (context) => const BottomNavBar()),
     );
   }
 }
