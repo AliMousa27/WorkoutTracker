@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/Login2.dart';
+import 'package:flutterapp/login.dart';
+import 'package:flutterapp/register_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +12,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const Login2();
+    return const RegisterPage();
   }
 }

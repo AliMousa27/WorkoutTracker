@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/InitalPage.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
+import 'package:flutterapp/inital_page.dart';
 
-class Login2 extends InitalPage {
-  const Login2({super.key});
+class Login extends InitalPage {
+  const Login({super.key});
 
   @override
   Column addContentToContainer() {
@@ -54,6 +52,9 @@ class Login2 extends InitalPage {
   }
 
   login() {
+    //todo implement body
+  }
+  createAccount() {
     //todo implement body
   }
 }

@@ -57,19 +57,16 @@ abstract class InitalPage extends StatelessWidget {
       String text, double heightFactor, IconData icon, bool obscureText) {
     return SizedBox(
       width: 350,
-      child: Align(
-        heightFactor: heightFactor,
-        child: TextFormField(
-          textAlign: TextAlign.center,
-          obscureText: obscureText,
-          decoration: InputDecoration(
-            prefixIcon: Icon(icon),
-            label: Align(widthFactor: 2.5, child: Text(text)),
-            filled: true,
-            fillColor: const Color.fromARGB(255, 248, 244, 244),
-            border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-          ),
+      child: TextFormField(
+        textAlign: TextAlign.center,
+        obscureText: obscureText,
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon),
+          label: Text(text),
+          filled: true,
+          fillColor: const Color.fromARGB(255, 248, 244, 244),
+          border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
         ),
       ),
     );
@@ -112,6 +109,26 @@ abstract class InitalPage extends StatelessWidget {
   LayoutBuilder constraintsFinder(BuildContext context, Function function) {
     return LayoutBuilder(
       builder: (context, constraints) => function(context, constraints),
+    );
+  }
+
+  SizedBox createStyledButton(double btnWidth, double btnHeight,
+      double btnCornerRadius, Function onPress) {
+    return SizedBox(
+      height: btnHeight,
+      width: btnWidth,
+      child: ElevatedButton(
+        //maybe will add parameters if needed when creating backend
+        onPressed: () => onPress,
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(btnCornerRadius),
+            ),
+          ),
+        ),
+        child: const Text("Register"),
+      ),
     );
   }
 }
