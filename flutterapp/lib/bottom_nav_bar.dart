@@ -14,11 +14,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return MaterialApp(
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           onTap: (value) => onBottomTapped(value),
           currentIndex: bottomIndex,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.fitness_center_rounded),
+              icon: Icon(Icons.list),
               label: 'Workouts',
             ),
             BottomNavigationBarItem(
@@ -26,8 +27,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
               label: 'Logs',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.add, size: 30),
+              label: 'Start',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: 'Settings',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.fitness_center_rounded),
+              label: 'Exercises',
             ),
           ],
         ),
@@ -38,6 +47,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void onBottomTapped(int newIndex) {
     setState(() {
       bottomIndex = newIndex;
+      print('Bottom index changed to $newIndex');
     });
   }
 }
