@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'exercises.dart';
+// import your other pages here
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -9,10 +11,21 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int bottomIndex = 0;
+
+  // list of children pages for indexed stack
+  final List<Widget> children = [
+    const Exercises(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        //define current page based on the bottomIndex and the children list
+        body: IndexedStack(
+          index: bottomIndex,
+          children: children,
+        ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           onTap: (value) => onBottomTapped(value),
@@ -47,7 +60,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void onBottomTapped(int newIndex) {
     setState(() {
       bottomIndex = newIndex;
-      print('Bottom index changed to $newIndex');
     });
   }
 }
